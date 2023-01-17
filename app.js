@@ -10,12 +10,13 @@ require('dotenv').config();
 // Connect to mongodb database
 mongoose.set('strictQuery', false);
 mongoose.connect(
-  "mongodb+srv://" + process.env.MONGO_ID + ":" + process.env.MONGO_PASS + "@resume-db.vieuhpw.mongodb.net/?retryWrites=true&w=majority"
+  "mongodb+srv://" + process.env.MONGO_ID + ":" + process.env.MONGO_PASS + "@resume-db.vieuhpw.mongodb.net/resume-db?retryWrites=true&w=majority"
 );
 
 // Routers
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+var contentRouter = require('./routes/content')
+var postRouter = require('./routes/post')
 
 var app = express();
 
@@ -31,7 +32,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Routes
 app.use(prefix, indexRouter);
-app.use(prefix + '/users', usersRouter);
+app.use(prefix + '/content', contentRouter);
+app.use(prefix + '/post', postRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
