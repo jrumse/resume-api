@@ -3,7 +3,17 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var prefix = '/api/v1'
+const mongoose = require("mongoose");
+require('dotenv').config()
 
+// Connect to mongodb database
+mongoose.set('strictQuery', false);
+mongoose.connect(
+  "mongodb+srv://" + process.env.MONGO_ID + ":" + process.env.MONGO_PASS + "@resume-db.vieuhpw.mongodb.net/?retryWrites=true&w=majority"
+);
+
+// Routers
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
@@ -19,8 +29,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
+// Routes
+app.use(prefix, indexRouter);
+app.use(prefix + '/users', usersRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
