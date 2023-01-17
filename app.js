@@ -3,9 +3,9 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-var prefix = '/api/v1'
+var prefix = '/api/v1';
 const mongoose = require("mongoose");
-require('dotenv').config()
+require('dotenv').config();
 
 // Connect to mongodb database
 mongoose.set('strictQuery', false);
