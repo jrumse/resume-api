@@ -1,17 +1,17 @@
-const Post = require("../model/Post");
+const { getPostsByCategoryService } = require("../service/postService");
 
-const getPostsByCategory = async(req, res, next) => {
+const getPostsByCategoryController = async(req, res, next) => {
     // Route Params
     const category = req.params.category
     // Return object
     let posts;
 
-    try {
-        // GET
-        posts = await Post.find({ category: category })
-    } catch(err) {
-        // Error with the GET
-        return next(err);
+    // Call Service
+    posts = await getPostsByCategoryService(category);
+
+    // Error with the post
+    if (posts instanceof Error) {
+        return next(posts);
     }
 
     // Error with the return data
@@ -23,4 +23,4 @@ const getPostsByCategory = async(req, res, next) => {
     return res.status(200).json(posts);
 };
 
-exports.getPostsByCategory = getPostsByCategory
+exports.getPostsByCategoryController = getPostsByCategoryController
