@@ -1,13 +1,14 @@
-const Content = require("../model/Content");
+const { getAllContentService } = require("../service/contentService");
 
-const getAllContent = async(req, res, next) => {
+const getAllContentController = async(req, res, next) => {
+    // Return Object
     let content;
-    try {
-        // GET
-        content = await Content.find();
-    } catch(err) {
-        // Error with the GET
-        return next(err);
+    // call service
+    content = await getAllContentService();
+
+    // Error with the content
+    if (content instanceof Error) {
+        return next(content);
     }
 
     // Error with the return data
@@ -19,4 +20,4 @@ const getAllContent = async(req, res, next) => {
     return res.status(200).json(content);
 };
 
-exports.getAllContent = getAllContent;
+exports.getAllContentController = getAllContentController;

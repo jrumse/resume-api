@@ -1,8 +1,8 @@
 var express = require('express');
 var router = express.Router();
-const { getAllContent } = require("../controller/contentController");
+const { getAllContentController } = require("../controller/contentController");
 
 /* GET all content */
-router.get('/', getAllContent);
+router.get('/', getAllContentController);
 
 module.exports = router;

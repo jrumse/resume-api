@@ -1,7 +1,8 @@
 const Post = require("../model/Post");
 
 const getPostsByCategory = function(category) {
-
+    // Return object
+    let posts;
     // Need to work in the aggregate here
     try {
         // GET
