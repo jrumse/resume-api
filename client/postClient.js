@@ -1,12 +1,19 @@
 const Post = require("../model/Post");
+const AggregateBuilder = require("../tools/aggregateBuilder")
+
 
 const getPostsByCategory = function(category) {
+    // Build Aggregate (into its own function)
+    let pipeline = [];
+    pipeline.push(AggregateBuilder.matchQuery('category', category));
+    pipeline.push(AggregateBuilder.lookupQuery('contents', 'content', '_id', 'content'));
+
     // Return object
     let posts;
-    // Need to work in the aggregate here
+
     try {
         // GET
-        posts = Post.find({ category: category })
+        posts = Post.aggregate(pipeline);
     } catch(err) {
         // Error with the GET
         return err;

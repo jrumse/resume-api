@@ -2,7 +2,7 @@ const { getPostsByCategoryService } = require("../service/postService");
 
 const getPostsByCategoryController = async(req, res, next) => {
     // Route Params
-    const category = req.params.category
+    const category = req.params.category;
     // Return object
     let posts;
 
@@ -23,4 +23,4 @@ const getPostsByCategoryController = async(req, res, next) => {
     return res.status(200).json(posts);
 };
 
-exports.getPostsByCategoryController = getPostsByCategoryController
+exports.getPostsByCategoryController = getPostsByCategoryController;

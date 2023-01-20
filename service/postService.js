@@ -5,4 +5,4 @@ const getPostsByCategoryService = function(category) {
     return getPostsByCategory(category);
 };
 
-exports.getPostsByCategoryService = getPostsByCategoryService
+exports.getPostsByCategoryService = getPostsByCategoryService;
