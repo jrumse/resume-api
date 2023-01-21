@@ -2,22 +2,22 @@ const { getAllContentService } = require("../service/contentService");
 
 const getAllContentController = async(req, res, next) => {
     // Return Object
-    let content;
+    let resp;
     // call service
-    content = await getAllContentService();
+    resp = await getAllContentService();
 
     // Error with the content
-    if (content instanceof Error) {
-        return next(content);
+    if (resp instanceof Error) {
+        return res.status(400).json({code: '400', error: resp});
     }
 
     // Error with the return data
-    if (!content) {
+    if (!resp) {
         return res.status(500).json({ message: "Internal Server Error" });
     }
 
     // Return Data
-    return res.status(200).json(content);
+    return res.status(200).json(resp);
 };
 
 exports.getAllContentController = getAllContentController;

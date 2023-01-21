@@ -6,29 +6,29 @@ const getAllPostsController = async(req, res, next) => {
     const contentQuery = req.query.content;
 
     // Return Object
-    let posts;
+    let resp;
 
     // Call Service Content Query
     if (contentQuery) {
-        posts = await getAllPostsWithContentService();
+        resp = await getAllPostsWithContentService();
     }
     // Call Service No Query
     else {
-        posts = await getAllPostsService();
+        resp = await getAllPostsService();
     }
 
     // Error with the post
-    if (posts instanceof Error) {
-        return next(posts);
+    if (resp instanceof Error) {
+        return res.status(400).json({code: '400', error: resp});
     }
 
     // Error with the return data
-    if (!posts) {
+    if (!resp) {
         return res.status(500).json({ message: "Internal Server Error" });
     }
 
     // Return Data
-    return res.status(200).json(posts);
+    return res.status(200).json(resp);
 }
 
 const getPostsByCategoryController = async(req, res, next) => {
@@ -37,29 +37,29 @@ const getPostsByCategoryController = async(req, res, next) => {
     const contentQuery = req.query.content;
 
     // Return object
-    let posts;
+    let resp;
 
     // Call Service ?content=true
     if (contentQuery) {
-        posts = await getPostsByCategoryWithContentService(category);
+        resp = await getPostsByCategoryWithContentService(category);
     }
     // Call Service No Query
     else {
-        posts = await getPostsByCategoryService(category);
+        resp = await getPostsByCategoryService(category);
     }
 
     // Error with the post
-    if (posts instanceof Error) {
-        return next(posts);
+    if (resp instanceof Error) {
+        return res.status(400).json({code: '400', error: resp});
     }
 
     // Error with the return data
-    if (!posts) {
+    if (!resp) {
         return res.status(500).json({ message: "Internal Server Error" });
     }
 
     // Return Data
-    return res.status(200).json(posts);
+    return res.status(200).json(resp);
 };
 
 exports.getAllPostsController = getAllPostsController;

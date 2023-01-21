@@ -16,4 +16,18 @@ const getAllContacts = function() {
     return contacts;
 }
 
+const postContact = async(contact) => {
+
+    let sav = await contact.save()
+        .then((contact) => {
+            return contact;
+        })
+        .catch((err) => {
+            return err;
+        });
+
+    return sav;
+}
+
+exports.postContact = postContact;
 exports.getAllContacts = getAllContacts;
