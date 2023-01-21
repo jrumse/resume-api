@@ -1,4 +1,9 @@
-const { getPostsByCategoryWithContent, getPostsByCategory } = require("../client/postClient");
+const { getAllPosts, getPostsByCategoryWithContent, getPostsByCategory } = require("../client/postClient");
+
+const getAllPostsService = function() {
+    // Return Data
+    return getAllPosts();
+}
 
 const getPostsByCategoryWithContentService = function(category) {
     // Return Data
@@ -10,5 +15,6 @@ const getPostsByCategoryService = function(category) {
     return getPostsByCategory(category);
 }
 
+exports.getAllPostsService = getAllPostsService;
 exports.getPostsByCategoryService = getPostsByCategoryService;
 exports.getPostsByCategoryWithContentService = getPostsByCategoryWithContentService;
