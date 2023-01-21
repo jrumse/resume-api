@@ -37,9 +37,9 @@ app.use(prefix + '/contact', contactRouter);
 app.use(prefix + '/content', contentRouter);
 app.use(prefix + '/post', postRouter);
 
-// catch 404 and forward to error handler
+// catch 404
 app.use(function(req, res, next) {
-  next(createError(404));
+  res.status(404).json({code: '404', status: "Not Found"});
 });
 
 // error handler
