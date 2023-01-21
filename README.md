@@ -8,28 +8,28 @@ An API Service for resume-website
 # Routes
 
 ## Get All Contact Receipts
-Endpoint: /contact
-Method: GET
-Query Parameters: None
+- Endpoint: /contact
+- Method: GET
+- Query Parameters: None
 
 ## Post Contact Receipt
-Endpoint: /contact
-Method: POST
-Query Parameters: None
-Body: Takes in Contact Schema as Input
+- Endpoint: /contact
+- Method: POST
+- Query Parameters: None
+- Body: Takes in Contact Schema as Input
 
 ## Get All Content
-Endpoint: /content
-Method: GET
-Query Parameters: None
+- Endpoint: /content
+- Method: GET
+- Query Parameters: None
 
 ## Get All Posts
-Endpoint: /post
-Method: GET
-Query Parameters: content - If true, aggregates content field
+- Endpoint: /post
+- Method: GET
+- Query Parameters: content - If true, aggregates content field
 
 ## Get Posts By Category
-Endpoint: /post/<category>
-Method: GET
-Query Parameters: content - If true, aggregates content field
-Endpoint Parameters: category - currently supports 'about', 'education', and 'work'
+- Endpoint: /post/<category>
+- Method: GET
+- Query Parameters: content - If true, aggregates content field
+- Endpoint Parameters: category - currently supports 'about', 'education', and 'work'
