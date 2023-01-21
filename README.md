@@ -29,7 +29,7 @@ An API Service for resume-website
 - Query Parameters: content - If true, aggregates content field
 
 ## Get Posts By Category
-- Endpoint: /post/<category>
+- Endpoint: /post/'category'
 - Method: GET
 - Query Parameters: content - If true, aggregates content field
 - Endpoint Parameters: category - currently supports 'about', 'education', and 'work'
