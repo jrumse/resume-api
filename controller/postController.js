@@ -1,12 +1,21 @@
-const { getAllPostsService, getPostsByCategoryWithContentService, getPostsByCategoryService } = require("../service/postService");
+const { getAllPostsService, getPostsByCategoryWithContentService, getPostsByCategoryService, getAllPostsWithContentService } = require("../service/postService");
 
 // All Posts
 const getAllPostsController = async(req, res, next) => {
+    // Query Parameters
+    const contentQuery = req.query.content;
+
     // Return Object
     let posts;
 
+    // Call Service Content Query
+    if (contentQuery) {
+        posts = await getAllPostsWithContentService();
+    }
     // Call Service No Query
-    posts = await getAllPostsService();
+    else {
+        posts = await getAllPostsService();
+    }
 
     // Error with the post
     if (posts instanceof Error) {

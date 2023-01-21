@@ -1,8 +1,13 @@
-const { getAllPosts, getPostsByCategoryWithContent, getPostsByCategory } = require("../client/postClient");
+const { getAllPosts, getPostsByCategoryWithContent, getPostsByCategory, getAllPostsWithContent } = require("../client/postClient");
 
 const getAllPostsService = function() {
     // Return Data
     return getAllPosts();
+}
+
+const getAllPostsWithContentService = function() {
+    // Return Data
+    return getAllPostsWithContent();
 }
 
 const getPostsByCategoryWithContentService = function(category) {
@@ -16,5 +21,6 @@ const getPostsByCategoryService = function(category) {
 }
 
 exports.getAllPostsService = getAllPostsService;
+exports.getAllPostsWithContentService = getAllPostsWithContentService;
 exports.getPostsByCategoryService = getPostsByCategoryService;
 exports.getPostsByCategoryWithContentService = getPostsByCategoryWithContentService;
