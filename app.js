@@ -15,8 +15,9 @@ mongoose.connect(
 
 // Routers
 var indexRouter = require('./routes/index');
-var contentRouter = require('./routes/content')
-var postRouter = require('./routes/post')
+var contactRouter = require('./routes/contact');
+var contentRouter = require('./routes/content');
+var postRouter = require('./routes/post');
 
 var app = express();
 
@@ -32,6 +33,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Routes
 app.use(prefix, indexRouter);
+app.use(prefix + '/contact', contactRouter);
 app.use(prefix + '/content', contentRouter);
 app.use(prefix + '/post', postRouter);
 
