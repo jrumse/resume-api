@@ -1,11 +1,17 @@
-var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var prefix = '/api/v1';
+var cors = require('cors');
 const mongoose = require("mongoose");
 require('dotenv').config();
+
+// Cors Configuration
+var corsOptions = {
+  origin: process.env.CLIENT,
+  optionsSuccessStatus: 200
+}
 
 // Connect to mongodb database
 mongoose.set('strictQuery', false);
@@ -20,6 +26,7 @@ var contentRouter = require('./routes/content');
 var postRouter = require('./routes/post');
 
 var app = express();
+app.use(cors(corsOptions));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
