@@ -1,10 +1,5 @@
-const { getAllContacts, postContact } = require("../client/contactClient");
+const { postContact } = require("../client/contactClient");
 const Contact = require("../model/Contact");
-
-const getAllContactsService = function() {
-    // Return Data
-    return getAllContacts();
-}
 
 const parseContact = function(req) {
     // Return Parsed Request Body
@@ -18,4 +13,3 @@ const postContactService = function(contact) {
 
 exports.parseContact = parseContact;
 exports.postContactService = postContactService;
-exports.getAllContactsService = getAllContactsService;

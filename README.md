@@ -7,11 +7,6 @@ An API Service for resume-website
 
 # Routes
 
-## Get All Contact Receipts
-- Endpoint: /contact
-- Method: GET
-- Query Parameters: None
-
 ## Post Contact Receipt
 - Endpoint: /contact
 - Method: POST
