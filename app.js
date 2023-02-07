@@ -4,6 +4,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var prefix = '/api/v1';
 var cors = require('cors');
+var helmet = require('helmet');
 const mongoose = require("mongoose");
 require('dotenv').config();
 
@@ -27,6 +28,7 @@ var postRouter = require('./routes/post');
 
 var app = express();
 app.use(cors(corsOptions));
+app.use(helmet());
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
