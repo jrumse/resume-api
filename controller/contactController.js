@@ -1,4 +1,5 @@
 const { postContactService, parseContact } = require("../service/contactService");
+const { encryptField } = require("../tools/encrypter");
 
 const postContactController = async(req, res, next) => {
     // Contact
@@ -6,6 +7,12 @@ const postContactController = async(req, res, next) => {
 
     // Parse
     contact = parseContact(req);
+
+    // Encrypt Fields
+    contact.name = encryptField(contact.name);
+    contact.email = encryptField(contact.email);
+    contact.message = encryptField(contact.message);
+    if (contact.number) contact.number = encryptField(contact.number);
 
     // Post
     let resp = await postContactService(contact, res);
