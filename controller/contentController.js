@@ -17,8 +17,7 @@ const getAllContentController = async(req, res, next) => {
     }
 
     // Return Data
-    // return res.status(200).json(resp);
-    res.status(500).json({ message: "Internal Server Error" });
+    return res.status(200).json(resp);
 };
 
 exports.getAllContentController = getAllContentController;
